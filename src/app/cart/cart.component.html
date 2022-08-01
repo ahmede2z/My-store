@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row my-5">
+    <!-- if my cart is empty -->
+    <ng-container *ngIf="myPurchases.length == 0; else elseTemplate">
+      <div class="alert alert-danger">
+        there's no any product added
+      </div>
+    </ng-container>
+    <!-- if i have items in my cart -->
+    <ng-template #elseTemplate>
+      <div class="col-lg-6 productInfomain">
+        <div class="row productInfo my-2" *ngFor="let product of myPurchases">
+          <div class="col-lg-6">
+            <img src="{{product.url}}" class="img-fluid w-50 productInfoImg rounded ">
+          </div>
+          <div class="col-lg-4 productInfoBody">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text"><i class="bi bi-currency-dollar" style="color: #0d6efd;"></i>{{product.price}}</p>
+            <div class="productAmount">
+              <span>Amount: </span>
+              <input type="number" min="1" max="100" class="form-control my-2 w-50 " [(ngModel)]="product.count"
+                (ngModelChange)="changeCount()">
+            </div>
+            <button type="button" class="btn-close  productInfoClose" aria-label="Close"
+              (click)="removeProduct(product)"></button>
+            <br>
+          </div>
+        </div>
+        <div>
+          <h2>
+            Total : <i class="bi bi-currency-dollar" style="color: #0d6efd;"></i>{{total}}
+          </h2>
+        </div>
+        <button type="button" class="btn btn-danger" (click)="clearAll()">Clear All</button>
+
+      </div>
+
+      <div class="col-lg-6">
+
+        <form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+          <label>Full name</label>
+          <input type="text" class="form-control w-50 my-2" placeholder="(minimum 3 characters)"
+            formControlName="username">
+          <div
+            *ngIf="submitForm.controls.username.invalid && (submitForm.controls.username.dirty || submitForm.controls.username.touched)"
+            class="alert" style="color:red;">
+            <div *ngIf="submitForm.controls.username.errors?.['required']">
+              Name is required !
+            </div>
+            <div *ngIf="submitForm.controls.username.errors?.['minlength']">
+              Name must be at least 3 characters long !
+            </div>
+          </div>
+          <label>Address</label>
+          <input formControlName="address" type="text" class="form-control w-50 my-2"
+            placeholder="(minimum 6 characters)">
+          <div
+            *ngIf="submitForm.controls.address.invalid && (submitForm.controls.address.dirty || submitForm.controls.address.touched)"
+            class="alert" style="color:red;">
+            <div *ngIf="submitForm.controls.address.errors?.['required']">
+              address is required !
+            </div>
+            <div *ngIf="submitForm.controls.address.errors?.['minlength']">
+              address must be at least 6 characters long !
+            </div>
+          </div>
+          <label>Credit card number</label>
+          <input formControlName="credit" class="form-control w-50 my-2" placeholder="16-digit number" type="numper">
+          <div
+            *ngIf="submitForm.controls.credit.invalid && (submitForm.controls.credit.dirty || submitForm.controls.credit.touched)"
+            class="alert" style="color:red;">
+            <div *ngIf="submitForm.controls.credit.errors?.['required']">
+              Credit Card is required.
+            </div>
+            <div *ngIf="submitForm.controls.credit.errors?.['minlength']">
+              must enter valid card Informations !
+            </div>
+          </div>
+          <button [disabled]="submitForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

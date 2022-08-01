@@ -1,0 +1,24 @@
+.card{
+    border: 0;
+}
+
+.card-img-top{
+    padding: 10px;
+    border: solid 1px rgba(0, 0, 0, 0.425);
+    cursor: pointer;
+}
+
+.card-body{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
+    
+}
+.card-body input{
+    margin: auto;
+}
+.card-body button{
+    margin: auto;
+}

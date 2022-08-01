@@ -1,0 +1,27 @@
+.productInfo img{
+    max-height: 70vh;
+}
+
+.productInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.productInfo p{
+    font-size: 18px;
+
+}
+
+.productInfo h5{
+    font-size: 25px;
+    
+}
+
+.productInfo a{
+    text-decoration: none;
+    color: #0d6efd;
+    font-size: 18px;
+    border: 0;
+}

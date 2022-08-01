@@ -1,0 +1,9 @@
+<div class="card text-center" style="width: 18rem;">
+  <img src="{{product.url}}" class="card-img-top"  (click)="sendItem.emit(product)" >
+  <div class="card-body ">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text"><i class="bi bi-currency-dollar" style="color: #0d6efd;"></i>{{product.price}}</p>
+    <input type="number" min="1" max="100" class="form-control my-2 w-50 " [(ngModel)]="product.count">
+    <button class="btn btn-primary my-2 w-50" (click)="addToCart(product)">Add to cart</button>
+  </div>
+</div>

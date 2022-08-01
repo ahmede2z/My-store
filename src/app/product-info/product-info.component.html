@@ -1,0 +1,16 @@
+<div class="container my-5 ">
+  <div class="row productInfo">
+    <div class="col-lg-6">
+      <img src="{{product.url}}" class="img-fluid ">
+    </div>
+    <div class="col-lg-4">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text"><i class="bi bi-currency-dollar" style="color: #0d6efd;"></i>{{product.price}}</p>
+      <p class="card-text">{{product.description}}</p>
+      <input type="number" min="1" max="100" class="form-control my-2 w-50 " [(ngModel)]="product.count">
+      <button class="btn btn-primary my-2 w-50" (click)="addToCart(product)">Add to cart</button>
+      <br>
+      <a routerLink="/"><span><i class="bi bi-arrow-left"></i> Back to products List</span></a>
+    </div>
+  </div>
+</div>
